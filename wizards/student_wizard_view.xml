@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <act_window id="student_wizard_action" name="Student Level" res_model="student.wizard"
+                src_model="students" view_mode="form" target="new"/>
+
+    <record id="student_wizard_view" model="ir.ui.view">
+        <field name="name">Student Marks View</field>
+        <field name="model">student.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="student_ids" widget="many2many_list"/>
+                    <field name="level"/>
+                </group>
+                <footer>
+                    <button name="set_student_level" string="Update Level" class="oe_right oe_highlight"
+                            type="object"/>
+                    <button string="Cancel" class="oe_right" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

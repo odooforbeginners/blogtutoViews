@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="marks_form_view" model="ir.ui.view">
+        <field name="name">Marks Form View</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                            <field name="exam1"/>
+                            <field name="exam2"/>
+                        </group>
+                        <group>
+                            <field name="extra"/>
+                            <field name="average"/>
+                            <field name="date_exam1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="marks_tree_view" model="ir.ui.view">
+        <field name="name">Marks Tree View</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="exam1"/>
+                <field name="exam2"/>
+                <field name="extra"/>
+                <field name="average"/>
+                <field name="date_exam1"/>
+            </tree>
+        </field>
+    </record>
+
+     <!-- Marks Pivot view -->
+    <record model="ir.ui.view" id="marks_pivot_view">
+        <field name="name">Marks</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <pivot string="Marks">
+                <field name="student_id" type="row"/>
+                <field name="course_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Marks Graph view -->
+    <record model="ir.ui.view" id="marks_graph_view">
+        <field name="name">Marks</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <graph string="Marks">
+                <field name="student_id" type="row"/>
+                <field name="course_id" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!--Marks Search views-->
+    <record id="marks_search_view" model="ir.ui.view">
+        <field name="name">Marks</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="student_id"/>
+                <group string="Group By">
+                    <filter name="group_by_courses" string="Courses" context="{'group_by':'course_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!--Marks calendar view-->
+    <record id="marks_calendar_view" model="ir.ui.view">
+            <field name="name">Marks</field>
+            <field name="model">marks</field>
+            <field name="arch" type="xml">
+                <calendar color="student_id" date_start="date_exam1" string="Marks">
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                </calendar>
+            </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="marks_action">
+        <field name="name">Marks</field>
+        <field name="res_model">marks</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar,graph,pivot</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="student_form_view" model="ir.ui.view">
+        <field name="name">Student Form View</field>
+        <field name="model">students</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Student Information">
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="level"/>
+                        </group>
+                        <group>
+                            <field name="number"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Marks" name="marks">
+                            <field name="mark_ids" context="{'default_student_id':active_id}" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="student_id" />
+                                    <field name="course_id"/>
+                                    <field name="exam1"/>
+                                    <field name="exam2"/>
+                                    <field name="extra"/>
+                                    <field name="average"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_tree_view" model="ir.ui.view">
+        <field name="name">Students Tree Views</field>
+        <field name="model">students</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="number"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

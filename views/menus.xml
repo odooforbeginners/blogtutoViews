@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <act_window id="courses_action_menu" name="Courses" res_model="courses" view_type="form" view_mode="form"/>
+    <act_window id="student_action_menu" name="Students" res_model="students" view_type="form" view_mode="tree,form"/>
+
+    <menuitem id="school_manager_main_menu" name="School Manager"/>
+    <menuitem id="student_main_menu" name="Students" parent="school_manager_main_menu" sequence="1" action="student_action_menu"/>
+    <menuitem id="courses_main_menu" name="Courses" parent="school_manager_main_menu" sequence="2" action="courses_action_menu"/>
+    <menuitem id="marks_main_menu" name="Marks" parent="school_manager_main_menu" sequence="3" action="marks_action"/>
+
+
+</odoo>
